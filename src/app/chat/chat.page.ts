@@ -11,7 +11,7 @@ export class ChatPage implements OnInit {
 
   messages: Message[] = [];
   message=new Message();
-  username:string=localStorage.getItem("current")|| '';
+  username:string=localStorage.getItem("username")|| '';
   constructor(private messageService: MessageService)
   {
 
