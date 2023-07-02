@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-folder',
@@ -7,11 +7,17 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./folder.page.scss'],
 })
 export class FolderPage implements OnInit {
-  public folder!: string;
-  private activatedRoute = inject(ActivatedRoute);
-  constructor() {}
+  public folder: string="Bienvenu";
+  public username:string="";
+
+  constructor(private route:Router) {}
 
   ngOnInit() {
-    this.folder = this.activatedRoute.snapshot.paramMap.get('id') as string;
+   // this.folder = this.activatedRoute.snapshot.paramMap.get('id') as string;
+  }
+  access()
+  {
+    localStorage.setItem("username",this.username);
+    this.route.navigate(['/chat']);
   }
 }
